@@ -15,7 +15,7 @@ def MAE(y, y_pred):
     '''
     Mean Absolute Error Loss
     '''
-    # TODO
+    return np.mean(np.abs(y_pred - y))
     pass
 
 # Here is a loss function for logistic regression
@@ -33,12 +33,17 @@ def evaluate_linear_regression(y_true, y_pred, title='Linear Regression Evaluati
     y_true = np.asarray(y_true).ravel()
     y_pred = np.asarray(y_pred).ravel()
 
+    MSE = mean_squared_error(y_true, y_pred)
+    MAE = mean_absolute_error(y_true, y_pred)
+    RMSE = np.sqrt(MSE) # RMSE is the square root of MSE
+    R2 = r2_score(y_true, y_pred)
+
     # TODO 
     metrics = {
-        'MSE': 'TODO: use sklearn.metrics to compute MSE',
-        'MAE': 'TODO: use sklearn.metrics to compute MAE',
-        'RMSE': 'TODO: use sklearn.metrics and numpy to compute RMSE',
-        'R-squared': 'TODO: use sklearn.metrics to compute R-squared',
+        'MSE': MSE,
+        'MAE': MAE,
+        'RMSE': RMSE,
+        'R-squared': R2,
     }
 
     print(f"=== {title} ===")
